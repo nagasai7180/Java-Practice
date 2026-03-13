@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Future Bike Showroom</title>
+
+<style>
+
+/* =========================
+   EASY CONTROL SETTINGS
+========================= */
+
+:root{
+
+--main-color:#00ffe7;
+
+/* Glow control */
+--glow-small:2px;
+--glow-medium:3px;
+--glow-big:6px;
+--glow-speed:2.5s;
+
+/* Logo size control */
+--logo-size:50px;
+
+}
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+position:absolute;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+z-index:10;
+}
+
+
+/* LEFT NAV */
+
+.nav-left{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+
+/* BRAND */
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+
+/* LOGO */
+
+.logo{
+width:var(--logo-size);
+height:var(--logo-size);
+border-radius:50%;
+}
+
+
+/* BRAND NAME */
+
+.brand-name{
+
+font-size:20px;
+font-weight:600;
+color:var(--main-color);
+
+text-shadow:
+0 0 var(--glow-small) var(--main-color),
+0 0 var(--glow-medium) var(--main-color),
+0 0 var(--glow-big) var(--main-color);
+
+animation:glow var(--glow-speed) infinite alternate;
+
+}
+
+
+/* NAV LINKS */
+
+.nav-left a{
+text-decoration:none;
+color:white;
+font-size:15px;
+transition:0.3s;
+}
+
+.nav-left a:hover{
+color:var(--main-color);
+}
+
+
+/* RIGHT NAV */
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.sign-icon{
+font-size:22px;
+cursor:pointer;
+}
+
+.menu-btn{
+font-size:26px;
+cursor:pointer;
+}
+
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+padding-left:120px;
+background-size:cover;
+background-position:center;
+transition:1s;
+position:relative;
+}
+
+
+/* DARK OVERLAY */
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+}
+
+
+/* HERO CONTENT */
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+
+/* HERO TITLE */
+
+.hero h1{
+
+font-size:70px;
+color:var(--main-color);
+
+text-shadow:
+0 0 var(--glow-small) var(--main-color),
+0 0 var(--glow-medium) var(--main-color),
+0 0 var(--glow-big) var(--main-color);
+
+animation:glow var(--glow-speed) infinite alternate;
+
+}
+
+.hero p{
+margin-top:20px;
+font-size:18px;
+color:#cccccc;
+}
+
+
+/* GLOW ANIMATION */
+
+@keyframes glow{
+
+from{
+text-shadow:
+0 0 var(--glow-small) var(--main-color),
+0 0 var(--glow-medium) var(--main-color);
+}
+
+to{
+text-shadow:
+0 0 var(--glow-medium) var(--main-color),
+0 0 var(--glow-big) var(--main-color);
+}
+
+}
+
+
+/* SIDE MENU */
+
+.side-menu{
+position:fixed;
+top:0;
+right:-320px;
+width:320px;
+height:100vh;
+background:#020202;
+padding:40px;
+transition:0.4s;
+border-left:2px solid var(--main-color);
+z-index:20;
+
+display:flex;
+flex-direction:column;
+}
+
+.side-menu.active{
+right:0;
+}
+
+.side-menu h2{
+color:var(--main-color);
+margin-bottom:30px;
+}
+
+.menu-links{
+display:flex;
+flex-direction:column;
+}
+
+
+/* MENU LINKS */
+
+.side-menu a{
+display:block;
+margin:18px 0;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:0.3s;
+}
+
+.side-menu a:hover{
+color:var(--main-color);
+}
+
+
+/* CHAT AI BUTTON */
+
+.ai-btn{
+
+display:block;
+width:100%;
+padding:12px;
+
+background:transparent;
+border:2px solid var(--main-color);
+
+color:white;
+font-size:17px;
+
+cursor:pointer;
+margin-top:25px;
+
+text-align:center;
+text-decoration:none;
+
+transition:0.25s;
+
+outline:none;
+box-shadow:none;
+
+}
+
+.ai-btn:hover{
+background:var(--main-color);
+color:black;
+}
+
+
+/* LOGOUT BUTTON */
+
+.logout-btn{
+
+margin-top:auto;
+
+display:block;
+width:100%;
+padding:12px;
+
+background:#111;
+border:2px solid red;
+
+color:white;
+font-size:17px;
+
+cursor:pointer;
+
+text-align:center;
+text-decoration:none;
+
+transition:0.3s;
+
+}
+
+.logout-btn:hover{
+background:red;
+color:white;
+}
+
+</style>
+
+</head>
+
+
+<body onclick="closeMenu(event)">
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="nav-left">
+
+<div class="brand">
+
+<img src="https://cdna.artstation.com/p/assets/images/images/015/177/696/original/artai-fernandez-moto-turntable-1.gif?1547382003" class="logo">
+
+<span class="brand-name">Future Bike</span>
+
+</div>
+
+<a href="models.html">New Models</a>
+<a href="electric.html">Electric Bikes</a>
+<a href="video.html">Bike Video</a>
+<a href="contact.html">Contact</a>
+<a href="special.html">Special Bikes</a>
+
+</div>
+
+
+<div class="nav-right">
+
+<a href="signin.html" class="sign-icon">👤</a>
+
+<div class="menu-btn" onclick="openMenu(event)">☰</div>
+
+</div>
+
+</div>
+
+
+<!-- HERO -->
+
+<section class="hero" id="hero">
+
+<div class="hero-content">
+
+<h1>Future Bike<br>Showroom</h1>
+
+<p>Explore futuristic bikes. Book, ride and experience tomorrow.</p>
+
+</div>
+
+</section>
+
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="menu">
+
+<h2>Menu</h2>
+
+<div class="menu-links">
+
+<a href="profile.html">My Profile</a>
+
+<a href="about.html">About Company</a>
+
+<a href="services.html">Services</a>
+
+<a href="support.html">Support</a>
+
+<a href="ai.html" class="ai-btn">Chat with AI</a>
+
+</div>
+
+<a href="logout.html" class="logout-btn">Logout</a>
+
+</div>
+
+
+<script>
+
+/* MENU */
+
+function openMenu(e){
+e.stopPropagation();
+document.getElementById("menu").classList.add("active");
+}
+
+function closeMenu(e){
+let menu=document.getElementById("menu");
+if(!menu.contains(e.target)){
+menu.classList.remove("active");
+}
+}
+
+
+/* BACKGROUND SLIDER */
+
+let images=[
+
+"https://www.gifcen.com/wp-content/uploads/2023/07/iron-man-gif-6.gif",
+"https://i.pinimg.com/originals/58/6f/74/586f7407c39b99124dca5d336af88287.gif",
+"https://i.pinimg.com/originals/17/f0/c9/17f0c99064c2c0842400697ea33f7c89.gif",
+"https://i.pinimg.com/originals/01/db/a5/01dba5f631a6949c6c5ad5e79b73aefd.gif",
+"https://images.squarespace-cdn.com/content/v1/58e45a52ebbd1a24417fdf93/1529963114997-WL9M0STKWVBIZBFEFF9S/avengersinfinity.gif"
+
+];
+
+let index=0;
+
+function changeBackground(){
+
+document.getElementById("hero").style.backgroundImage=
+"url('"+images[index]+"')";
+
+index++;
+
+if(index==images.length){
+index=0;
+}
+
+}
+
+setInterval(changeBackground,4000);
+
+changeBackground();
+
+</script>
+
+</body>
+</html>
