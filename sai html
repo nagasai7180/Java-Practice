@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Future Bike Showroom</title>
+
+<style>
+
+/* =====================================
+GLOBAL SETTINGS
+===================================== */
+
+:root{
+
+--main-color:#00ffe7;
+--glow-small:2px;
+--glow-medium:4px;
+--glow-big:12px;
+--glow-speed:2s;
+--logo-size:60px;
+
+--title-size:70px;
+--shine:#00f7ff;
+--card-width:260px;
+--card-height:420px;
+--tilt:10deg;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+
+/* =====================================
+NAVBAR
+===================================== */
+
+.navbar{
+position:absolute;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+z-index:10;
+}
+
+.nav-left{
+display:flex;
+align-items:center;
+gap:30px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+/* LOGO */
+
+.logo{
+
+width:var(--logo-size);
+height:var(--logo-size);
+
+border-radius:50%;
+cursor:pointer;
+
+border:2px solid var(--main-color);
+
+box-shadow:
+0 0 10px var(--main-color),
+0 0 20px var(--main-color);
+
+transition:0.4s;
+
+}
+
+.logo:hover{
+
+transform:scale(1.15) rotate(10deg);
+
+box-shadow:
+0 0 20px var(--main-color),
+0 0 40px var(--main-color),
+0 0 60px var(--main-color);
+
+}
+
+/* BRAND NAME */
+
+.brand-name{
+
+font-size:20px;
+font-weight:600;
+color:var(--main-color);
+
+text-shadow:
+0 0 var(--glow-small) var(--main-color),
+0 0 var(--glow-medium) var(--main-color),
+0 0 var(--glow-big) var(--main-color);
+
+animation:glow var(--glow-speed) infinite alternate;
+
+}
+
+.nav-left a{
+text-decoration:none;
+color:white;
+font-size:15px;
+transition:0.3s;
+}
+
+.nav-left a:hover{
+color:var(--main-color);
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.sign-icon{
+font-size:22px;
+cursor:pointer;
+}
+
+.menu-btn{
+font-size:26px;
+cursor:pointer;
+}
+
+/* =====================================
+HERO SECTION
+===================================== */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+padding-left:120px;
+background-size:cover;
+background-position:center;
+transition:1s;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+
+font-size:70px;
+color:var(--main-color);
+
+text-shadow:
+0 0 var(--glow-small) var(--main-color),
+0 0 var(--glow-medium) var(--main-color),
+0 0 var(--glow-big) var(--main-color);
+
+animation:glow var(--glow-speed) infinite alternate;
+
+}
+
+.hero p{
+margin-top:20px;
+font-size:18px;
+color:#cccccc;
+}
+
+/* =====================================
+GLOW ANIMATION
+===================================== */
+
+@keyframes glow{
+
+from{
+text-shadow:
+0 0 var(--glow-small) var(--main-color),
+0 0 var(--glow-medium) var(--main-color);
+}
+
+to{
+text-shadow:
+0 0 var(--glow-medium) var(--main-color),
+0 0 var(--glow-big) var(--main-color);
+}
+
+}
+
+
+/* =====================================
+SIDE MENU
+===================================== */
+
+.side-menu{
+position:fixed;
+top:0;
+right:-320px;
+width:320px;
+height:100vh;
+background:#020202;
+padding:40px;
+transition:0.4s;
+border-left:2px solid var(--main-color);
+z-index:20;
+display:flex;
+flex-direction:column;
+}
+
+.side-menu.active{
+right:0;
+}
+
+.side-menu h2{
+color:var(--main-color);
+margin-bottom:30px;
+}
+
+.menu-links{
+display:flex;
+flex-direction:column;
+}
+
+.side-menu a{
+display:block;
+margin:18px 0;
+text-decoration:none;
+color:white;
+font-size:18px;
+transition:0.3s;
+}
+
+.side-menu a:hover{
+color:var(--main-color);
+}
+
+.ai-btn{
+display:block;
+width:100%;
+padding:12px;
+background:transparent;
+border:2px solid var(--main-color);
+color:white;
+font-size:17px;
+cursor:pointer;
+margin-top:25px;
+text-align:center;
+text-decoration:none;
+transition:0.25s;
+}
+
+.ai-btn:hover{
+background:var(--main-color);
+color:black;
+}
+
+.logout-btn{
+margin-top:auto;
+display:block;
+width:100%;
+padding:12px;
+background:#111;
+border:2px solid red;
+color:white;
+font-size:17px;
+cursor:pointer;
+text-align:center;
+text-decoration:none;
+transition:0.3s;
+}
+
+.logout-btn:hover{
+background:red;
+}
+
+
+/* =====================================
+SECOND PAGE (BIKE SHOWROOM)
+===================================== */
+
+.bike-section{
+height:100vh;
+position:relative;
+overflow:hidden;
+}
+
+/* background slideshow */
+
+.slideshow{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:slideShow 30s infinite;
+filter:brightness(0.45);
+}
+
+.slide:nth-child(1){
+background-image:url("https://i.pinimg.com/originals/85/05/05/8505051384604a66d6af0f6662e7dd44.gif");
+animation-delay:0s;
+}
+
+.slide:nth-child(2){
+background-image:url("https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyY3h6MGY5OGI1YzJubTlncjV2dzJ5cDljZzM0OHF3YmNjYmxtZXJycSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xTiTnxpQ3ghPiB2Hp6/source.gif");
+animation-delay:6s;
+}
+
+.slide:nth-child(3){
+background-image:url("https://i.pinimg.com/originals/e4/28/15/e428152eecbc597a0617dc7be7c7d418.gif");
+animation-delay:12s;
+}
+
+.slide:nth-child(4){
+background-image:url("https://giffiles.alphacoders.com/150/15053.gif");
+animation-delay:18s;
+}
+
+.slide:nth-child(5){
+background-image:url("https://i.pinimg.com/originals/7d/df/32/7ddf320ed00ca33a7e965493bf2255cf.gif");
+animation-delay:24s;
+}
+
+/* slideshow animation */
+
+@keyframes slideShow{
+
+0%{opacity:0;}
+5%{opacity:1;}
+20%{opacity:1;}
+25%{opacity:0;}
+100%{opacity:0;}
+
+}
+
+/* heading */
+
+.title{
+position:absolute;
+top:40px;
+left:50%;
+transform:translateX(-50%);
+font-size:var(--title-size);
+letter-spacing:6px;
+white-space:nowrap;
+color:var(--shine);
+
+text-shadow:
+0 0 10px var(--shine),
+0 0 30px var(--shine),
+0 0 60px var(--shine);
+
+z-index:10;
+}
+
+/* card container */
+
+.cards{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+display:flex;
+gap:40px;
+z-index:5;
+}
+
+/* cards */
+
+.card{
+
+width:var(--card-width);
+height:var(--card-height);
+
+transform:skewX(calc(-1 * var(--tilt)));
+
+border-radius:10px;
+
+background-size:cover;
+background-position:center;
+
+overflow:hidden;
+
+box-shadow:
+0 0 20px #00ffff40,
+0 0 60px #00ffff20;
+
+transition:0.5s;
+
+position:relative;
+
+cursor:pointer;
+
+}
+.card:hover{
+
+transform:skewX(calc(-1 * var(--tilt))) scale(1.1);
+
+box-shadow:
+0 0 40px #00ffff,
+0 0 80px #00ffff;
+
+}
+
+/* overlay */
+
+.card::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+}
+
+/* bike name */
+
+.bike-name{
+
+position:absolute;
+top:30px;
+left:50%;
+transform:translateX(-50%) skewX(var(--tilt));
+
+color:white;
+font-size:22px;
+
+letter-spacing:2px;
+
+text-shadow:0 0 10px #00ffff;
+
+z-index:2;
+
+}
+
+/* coming soon tag */
+
+.tag{
+
+position:absolute;
+bottom:40px;
+left:50%;
+
+transform:translateX(-50%) skewX(var(--tilt));
+
+font-size:26px;
+font-weight:bold;
+
+color:#00ffff;
+
+letter-spacing:4px;
+
+text-shadow:
+0 0 10px #00ffff,
+0 0 30px #00ffff;
+
+z-index:2;
+
+}
+
+/* card images */
+
+.card1{
+background-image:url("https://www.slashgear.com/img/gallery/6-futuristic-motorcycles-that-actually-exist/arc-vector-1733391512.jpg");
+}
+
+.card2{
+background-image:url("https://mir-s3-cdn-cf.behance.net/project_modules/fs/51974a34438857.56d1cded3a57e.jpg");
+}
+
+.card3{
+background-image:url("https://i.pinimg.com/originals/84/d2/7b/84d27bf05fb6b6ecd6a24f559a619e39.jpg");
+}
+
+.card4{
+background-image:url("https://wirecase3d.com/cdn/shop/products/bike1.jpg?v=1532863204&width=1445");
+}
+
+</style>
+
+</head>
+
+
+<body onclick="closeMenu(event)">
+
+<!-- AUDIO -->
+
+<audio id="song1" src="raj.mp3"></audio>
+<audio id="song2" src="aa23.mp3"></audio>
+
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="nav-left">
+
+<div class="brand">
+
+<img onclick="toggleMusic()"
+src="https://cdna.artstation.com/p/assets/images/images/015/177/696/original/artai-fernandez-moto-turntable-1.gif?1547382003"
+class="logo">
+
+<span class="brand-name">Future Bike</span>
+
+</div>
+
+<a href="models.html">New Models</a>
+<a href="electric.html">Electric Bikes</a>
+<a href="video.html">Bike Video</a>
+<a href="contact.html">Contact</a>
+<a href="special.html">Special Bikes</a>
+
+</div>
+
+<div class="nav-right">
+
+<a href="signin.html" class="sign-icon">👤</a>
+
+<div class="menu-btn" onclick="openMenu(event)">☰</div>
+
+</div>
+
+</div>
+
+
+<!-- HERO PAGE -->
+
+<section class="hero" id="hero">
+
+<div class="hero-content">
+
+<h1>Future Bike<br>Showroom</h1>
+
+<p>Explore futuristic bikes. Book, ride and experience tomorrow.</p>
+
+</div>
+
+</section>
+
+
+
+<!-- SECOND SCROLL PAGE -->
+
+<section class="bike-section">
+
+
+<div class="slideshow">
+
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+
+</div>
+
+
+<div class="title">
+FUTURISTIC BIKE SHOWROOM
+</div>
+
+
+<div class="cards">
+
+<a href="bike1.html">
+<div class="card card1">
+<div class="bike-name">PHANTOM X</div>
+<div class="tag">COMING SOON</div>
+</div>
+</a>
+
+<a href="bike2.html">
+<div class="card card2">
+<div class="bike-name">NEON RIDER</div>
+<div class="tag">COMING SOON</div>
+</div>
+</a>
+
+<a href="bike3.html">
+<div class="card card3">
+<div class="bike-name">CYBER BLADE</div>
+<div class="tag">COMING SOON</div>
+</div>
+</a>
+
+<a href="bike4.html">
+<div class="card card4">
+<div class="bike-name">VORTEX 9</div>
+<div class="tag">COMING SOON</div>
+</div>
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="menu">
+
+<h2>Menu</h2>
+
+<div class="menu-links">
+
+<a href="profile.html">My Profile</a>
+<a href="about.html">About Company</a>
+<a href="services.html">Services</a>
+<a href="support.html">Support</a>
+<a href="ai.html" class="ai-btn">Chat with AI</a>
+
+</div>
+
+<a href="logout.html" class="logout-btn">Logout</a>
+
+</div>
+
+
+
+<script>
+
+/* MENU */
+
+function openMenu(e){
+e.stopPropagation();
+document.getElementById("menu").classList.add("active");
+}
+
+function closeMenu(e){
+let menu=document.getElementById("menu");
+if(!menu.contains(e.target)){
+menu.classList.remove("active");
+}
+}
+
+
+/* MUSIC CONTROL */
+
+let song1=document.getElementById("song1");
+let song2=document.getElementById("song2");
+
+let musicPlaying=false;
+
+song1.onended=function(){
+song2.play();
+}
+
+song2.onended=function(){
+song1.play();
+}
+
+function toggleMusic(){
+
+if(!musicPlaying){
+
+song1.play();
+musicPlaying=true;
+
+}else{
+
+song1.pause();
+song2.pause();
+
+song1.currentTime=0;
+song2.currentTime=0;
+
+musicPlaying=false;
+
+}
+
+}
+
+
+/* HERO BACKGROUND SLIDER */
+
+let images=[
+
+"https://www.gifcen.com/wp-content/uploads/2023/07/iron-man-gif-6.gif",
+"https://i.pinimg.com/originals/58/6f/74/586f7407c39b99124dca5d336af88287.gif",
+"https://i.pinimg.com/originals/17/f0/c9/17f0c99064c2c0842400697ea33f7c89.gif",
+"https://i.pinimg.com/originals/01/db/a5/01dba5f631a6949c6c5ad5e79b73aefd.gif",
+"https://images.squarespace-cdn.com/content/v1/58e45a52ebbd1a24417fdf93/1529963114997-WL9M0STKWVBIZBFEFF9S/avengersinfinity.gif"
+
+];
+
+let index=0;
+
+function changeBackground(){
+
+document.getElementById("hero").style.backgroundImage=
+"url('"+images[index]+"')";
+
+index++;
+
+if(index==images.length){
+index=0;
+}
+
+}
+
+setInterval(changeBackground,4000);
+
+changeBackground();
+
+</script>
+
+</body>
+</html>
