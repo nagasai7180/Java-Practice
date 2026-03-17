@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Future Bike Info</title>
+
+<style>
+
+/* BODY */
+
+body{
+margin:0;
+font-family:Arial;
+color:white;
+}
+
+/* BACKGROUND GIF */
+
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUycHMxMGxrY3FnNWhhNTlpdmd1MHM1Ym93Mndpb2RqY21hemM5N2p1NCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xTiTnxpQ3ghPiB2Hp6/giphy.gif");
+background-size:cover;
+background-position:center;
+z-index:-2;
+}
+
+/* DARK LAYER */
+
+.dark-layer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75);
+z-index:-1;
+}
+
+/* HEADING */
+
+.heading{
+text-align:center;
+font-size:50px;
+color:#00eaff;
+margin-top:40px;
+margin-bottom:80px;
+}
+
+/* SECTION */
+
+.section{
+width:80%;
+margin:auto;
+}
+
+/* BOX */
+
+.box{
+display:flex;
+align-items:center;
+gap:40px;
+margin-bottom:90px;
+}
+
+/* ZIGZAG */
+
+.reverse{
+flex-direction:row-reverse;
+}
+
+/* IMAGE */
+
+.box img{
+width:320px;
+height:190px;
+object-fit:cover;
+border-radius:8px;
+cursor:pointer;
+transition:0.4s;
+}
+
+.box img:hover{
+transform:scale(1.05);
+}
+
+/* TITLE */
+
+.title{
+font-size:26px;
+color:#00eaff;
+margin-bottom:10px;
+}
+
+/* TEXT */
+
+.text{
+color:#ccc;
+line-height:1.6;
+font-size:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="dark-layer"></div>
+
+<div class="heading">
+Our Company Overview
+</div>
+
+<div class="section">
+
+<!-- ABOUT COMPANY -->
+
+<div class="box">
+
+<a href="about.html">
+<img src="https://cdn.prod.website-files.com/62c62e25766d581074487c82/654bac61475e153e14460639_20231108T0341-4aaa6522-76fd-46d8-ae0b-f4081c8301a6.png">
+</a>
+
+<div>
+<div class="title">About Company</div>
+
+<div class="text">
+Future Bike showroom introduces next generation motorcycles,
+AI powered riding machines and futuristic superbike technology.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SERVICES -->
+
+<div class="box reverse">
+
+<a href="services.html">
+<img src="https://www.balanceimmigration.co.in/wp-content/uploads/2023/09/SERVICE-IMAGE-2.jpg">
+</a>
+
+<div>
+
+<div class="title">Services</div>
+
+<div class="text">
+We provide premium bike booking, custom builds,
+electric bike solutions and advanced test ride experiences.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SUPPORT -->
+
+<div class="box">
+
+<a href="support.html">
+<img src="https://media.istockphoto.com/id/625736338/photo/stack-of-hands-showing-unity.jpg?s=612x612&w=0&k=20&c=20mAQjGRQ5XVKqHe2qFguqGZ4dwto6lxxinciCfnVI0=">
+</a>
+
+<div>
+
+<div class="title">Support</div>
+
+<div class="text">
+Our team provides 24/7 bike support, maintenance guidance
+and technical assistance for high performance machines.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
