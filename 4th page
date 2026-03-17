@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>Futuristic Car Showroom</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+color:white;
+overflow:hidden;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+width:100%;
+height:100vh;
+overflow:hidden;
+}
+
+/* SLIDES */
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:fade 30s infinite;
+}
+
+/* IMAGES */
+
+.slide:nth-child(1){
+background-image:url("https://c.ndtvimg.com/2022-01/14tg328o_car_625x300_11_January_22.jpg");
+animation-delay:0s;
+}
+
+.slide:nth-child(2){
+background-image:url("https://static.vecteezy.com/system/resources/thumbnails/047/734/585/small/futuristic-electric-car-with-neon-lights-on-water-at-sunset-showcasing-ecofriendly-transportation-photo.jpg");
+animation-delay:6s;
+}
+
+.slide:nth-child(3){
+background-image:url("https://www.thearabtoday.com/wp-content/uploads/2024/07/Rolls-Royce-Boat-Tail.jpg");
+animation-delay:12s;
+}
+
+.slide:nth-child(4){
+background-image:url("https://media.assettype.com/thequint%2F2016-06%2F4cac58dd-a63b-4e2b-b69d-c43e296e8389%2Frolls.jpg?auto=format%2Ccompress&fmt=webp&width=720");
+animation-delay:18s;
+}
+
+.slide:nth-child(5){
+background-image:url("https://static0.hotcarsimages.com/wordpress/wp-content/uploads/2021/11/Mercedes-Benz-Vision-AVTR-(1).jpg?w=1200&h=628&fit=crop");
+animation-delay:24s;
+}
+
+/* SMOOTH FADE */
+
+@keyframes fade{
+
+0%{opacity:0}
+5%{opacity:1}
+20%{opacity:1}
+25%{opacity:0}
+100%{opacity:0}
+
+}
+
+/* DARK OVERLAY */
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:1;
+}
+
+/* LOGO */
+
+.logo-area{
+position:absolute;
+top:25px;
+left:35px;
+display:flex;
+align-items:center;
+gap:12px;
+z-index:3;
+cursor:pointer;
+}
+
+.logo-area img{
+width:50px;
+filter:drop-shadow(0 0 10px red);
+}
+
+.logo-area span{
+font-size:22px;
+font-weight:bold;
+color:red;
+text-shadow:
+0 0 10px red,
+0 0 25px red;
+}
+
+/* MAIN TEXT */
+
+.main-text{
+position:absolute;
+left:80px;
+top:48%;   /* konchem kindha move */
+transform:translateY(-50%);
+z-index:3;
+}
+
+.main-text h1{
+font-size:80px;
+line-height:90px;
+color:red;
+
+text-shadow:
+0 0 10px red,
+0 0 40px red,
+0 0 80px red;
+}
+
+.coming{
+margin-top:20px;
+font-size:28px;
+letter-spacing:8px;
+}
+
+/* THANK YOU TEXT */
+
+.thankyou{
+position:absolute;
+bottom:35px;
+left:50%;
+transform:translateX(-50%);
+z-index:3;
+
+font-size:26px;
+letter-spacing:6px;
+
+text-shadow:
+0 0 10px white,
+0 0 25px white;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+
+<!-- LOGO -->
+
+<div class="logo-area" onclick="toggleMusic()">
+
+<img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png">
+
+<span>Future Car Showroom</span>
+
+</div>
+
+<!-- MAIN TEXT -->
+
+<div class="main-text">
+
+<h1>
+FUTURE CAR<br>
+SHOWROOM
+</h1>
+
+<div class="coming">
+COMING SOON
+</div>
+
+</div>
+
+<!-- THANK YOU -->
+
+<div class="thankyou">
+THANK YOU FOR VISITING
+</div>
+
+</div>
+
+<audio id="music">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_8c1a0e1e71.mp3">
+</audio>
+
+<script>
+
+let music=document.getElementById("music");
+let playing=false;
+
+function toggleMusic(){
+
+if(!playing){
+music.play();
+playing=true;
+}else{
+music.pause();
+playing=false;
+}
+
+}
+
+</script>
+
+</body>
+</html>
