@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Future Bike Showroom</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL SETTINGS
+===================================================== */
+
+:root{
+    --blue:#00eaff;
+    --blue-light:#b8ffff;
+    --blue-dark:#006cff;
+
+    --logo-size:60px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    padding:20px 60px;
+
+    z-index:20;
+}
+
+
+.nav-left{
+
+    display:flex;
+    align-items:center;
+
+    gap:30px;
+
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    flex-shrink:0;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo{
+
+    width:var(--logo-size);
+    height:var(--logo-size);
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    border:2px solid var(--blue);
+
+    box-shadow:
+
+        0 0 10px var(--blue),
+
+        0 0 20px var(--blue),
+
+        0 0 35px rgba(0,234,255,0.6);
+
+    transition:0.4s;
+}
+
+
+.logo:hover{
+
+    transform:
+        scale(1.12)
+        rotate(8deg);
+
+    box-shadow:
+
+        0 0 15px var(--blue),
+
+        0 0 35px var(--blue),
+
+        0 0 65px var(--blue);
+}
+
+
+/* =====================================================
+   FUTURE BIKE BRAND
+===================================================== */
+
+.brand-name{
+
+    position:relative;
+
+    font-size:27px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:transparent;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #ffffff 0%,
+
+            #bfffff 18%,
+
+            #00eaff 38%,
+
+            #009dff 58%,
+
+            #005eff 78%,
+
+            #00eaff 100%
+
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    text-shadow:
+
+        0 0 3px #ffffff,
+
+        0 0 7px var(--blue),
+
+        0 0 15px var(--blue);
+
+    filter:
+
+        drop-shadow(0 0 4px var(--blue))
+
+        drop-shadow(
+            0 0 10px rgba(0,234,255,0.6)
+        );
+
+    transform:skewX(-6deg);
+
+    white-space:nowrap;
+
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   BRAND TEXT SHINE
+===================================================== */
+
+.brand-name::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-30%;
+
+    left:-70px;
+
+    width:40px;
+
+    height:160%;
+
+    transform:skewX(-25deg);
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent 0%,
+
+            rgba(255,255,255,0.9) 50%,
+
+            transparent 100%
+
+        );
+
+    filter:
+
+        blur(2px)
+
+        drop-shadow(
+            0 0 8px var(--blue)
+        );
+
+    animation:
+        brandShine 4s linear infinite;
+
+    pointer-events:none;
+}
+
+
+@keyframes brandShine{
+
+    0%{
+        left:-70px;
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    45%{
+        opacity:1;
+    }
+
+    60%{
+        left:110%;
+        opacity:0;
+    }
+
+    100%{
+        left:110%;
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   NAVIGATION MENU
+===================================================== */
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:5px 0;
+}
+
+
+.nav-menu a{
+
+    position:relative;
+
+    display:inline-block;
+
+    padding:6px 0;
+
+    text-decoration:none;
+
+    color:#d9ffff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:0.5px;
+
+    white-space:nowrap;
+
+    transition:0.3s;
+
+    z-index:2;
+}
+
+
+.nav-menu a:hover{
+
+    color:white;
+
+    text-shadow:
+
+        0 0 5px var(--blue),
+
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   BLUE UNDERLINE
+===================================================== */
+
+.nav-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-4px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--blue);
+
+    box-shadow:
+
+        0 0 5px var(--blue),
+
+        0 0 12px var(--blue);
+
+    transition:0.35s;
+}
+
+
+.nav-menu a:hover::after{
+
+    width:100%;
+}
+
+
+/* =====================================================
+   MOVING SHINE ACROSS TOP MENU
+   New Models
+   ↓
+   Electric Bikes
+   ↓
+   Bike Video
+   ↓
+   Contact
+   ↓
+   Special Bikes
+===================================================== */
+
+.nav-menu::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:-60px;
+
+    width:50px;
+
+    height:42px;
+
+    transform:
+        translateY(-50%)
+        skewX(-20deg);
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent 0%,
+
+            rgba(0,234,255,0.05) 15%,
+
+            rgba(255,255,255,0.95) 50%,
+
+            rgba(0,234,255,0.05) 85%,
+
+            transparent 100%
+
+        );
+
+    filter:
+
+        blur(1px)
+
+        drop-shadow(
+            0 0 8px var(--blue)
+        )
+
+        drop-shadow(
+            0 0 18px var(--blue)
+        );
+
+    pointer-events:none;
+
+    z-index:5;
+
+    animation:
+        menuShine 5s linear infinite;
+}
+
+
+/* =====================================================
+   MENU SHINE ANIMATION
+===================================================== */
+
+@keyframes menuShine{
+
+    0%{
+
+        left:-60px;
+
+        opacity:0;
+    }
+
+    5%{
+
+        opacity:1;
+    }
+
+    90%{
+
+        opacity:1;
+    }
+
+    100%{
+
+        left:110%;
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:
+
+        130px 70px
+
+        70px 90px;
+
+    background-size:cover;
+
+    background-position:center;
+
+    transition:1s;
+}
+
+
+/* =====================================================
+   DARK OVERLAY
+===================================================== */
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(0,0,0,0.90),
+
+            rgba(0,0,0,0.55),
+
+            rgba(0,0,0,0.78)
+
+        );
+
+    z-index:0;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:70px;
+}
+
+
+/* =====================================================
+   LEFT SIDE
+===================================================== */
+
+.hero-left{
+
+    width:42%;
+
+    padding-left:25px;
+}
+
+
+.hero-left h1{
+
+    font-size:70px;
+
+    line-height:1.05;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--blue);
+
+    text-shadow:
+
+        0 0 3px var(--blue),
+
+        0 0 8px var(--blue),
+
+        0 0 18px var(--blue),
+
+        0 0 35px rgba(0,234,255,0.65);
+}
+
+
+.hero-left p{
+
+    margin-top:25px;
+
+    font-size:18px;
+
+    color:#d0d0d0;
+
+    letter-spacing:1px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   SMALL BLUE LINE
+===================================================== */
+
+.hero-left p::before{
+
+    content:"";
+
+    display:inline-block;
+
+    width:45px;
+
+    height:2px;
+
+    margin-right:12px;
+
+    vertical-align:middle;
+
+    background:var(--blue);
+
+    box-shadow:
+
+        0 0 6px var(--blue),
+
+        0 0 15px var(--blue);
+}
+
+
+/* =====================================================
+   RIGHT SIDE SHOWROOM
+===================================================== */
+
+.showroom{
+
+    width:54%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* =====================================================
+   ORDER NOW
+===================================================== */
+
+.order-title{
+
+    margin-bottom:24px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:white;
+
+    text-shadow:
+
+        0 0 5px var(--blue),
+
+        0 0 12px var(--blue);
+}
+
+
+.order-title::after{
+
+    content:"";
+
+    display:block;
+
+    width:150px;
+
+    height:2px;
+
+    margin:8px auto 0;
+
+    background:var(--blue);
+
+    box-shadow:
+
+        0 0 5px var(--blue),
+
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   FOUR IMAGE BUTTONS
+===================================================== */
+
+.bike-grid{
+
+    width:100%;
+
+    max-width:720px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:32px 35px;
+}
+
+
+/* =====================================================
+   BIKE BUTTON
+===================================================== */
+
+.bike-button{
+
+    display:block;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   IMAGE FRAME
+===================================================== */
+
+.image-frame{
+
+    position:relative;
+
+    width:100%;
+
+    height:175px;
+
+    overflow:hidden;
+
+    clip-path:
+        polygon(
+            10% 0%,
+            90% 0%,
+            100% 100%,
+            0% 100%
+        );
+
+    border:2px solid var(--blue);
+
+    background:#02090c;
+
+    box-shadow:
+
+        0 0 7px rgba(0,234,255,0.5),
+
+        inset 0 0 15px rgba(0,234,255,0.12);
+
+    transition:0.35s;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.image-frame img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    opacity:0.82;
+
+    transition:0.45s;
+}
+
+
+/* =====================================================
+   IMAGE DARK LAYER
+===================================================== */
+
+.image-frame::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(0,0,0,0.05),
+
+            rgba(0,0,0,0.35)
+
+        );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   IMAGE BUTTON HOVER
+===================================================== */
+
+.bike-button:hover .image-frame{
+
+    border-color:#ffffff;
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+
+        0 0 10px var(--blue),
+
+        0 0 22px rgba(0,234,255,0.45);
+}
+
+
+.bike-button:hover .image-frame img{
+
+    transform:scale(1.08);
+
+    opacity:1;
+}
+
+
+/* =====================================================
+   BIKE NAME
+===================================================== */
+
+.bike-name{
+
+    margin-top:13px;
+
+    color:white;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+
+        0 0 4px var(--blue),
+
+        0 0 9px var(--blue);
+
+    transition:0.3s;
+}
+
+
+.bike-button:hover .bike-name{
+
+    color:var(--blue-light);
+
+    text-shadow:
+
+        0 0 5px var(--blue),
+
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   SMALL CORNER LIGHTS
+===================================================== */
+
+.image-frame .corner{
+
+    position:absolute;
+
+    width:14px;
+
+    height:14px;
+
+    z-index:5;
+}
+
+
+.image-frame .top-left{
+
+    top:8px;
+    left:10px;
+
+    border-top:2px solid var(--blue);
+    border-left:2px solid var(--blue);
+}
+
+
+.image-frame .top-right{
+
+    top:8px;
+    right:10px;
+
+    border-top:2px solid var(--blue);
+    border-right:2px solid var(--blue);
+}
+
+
+.image-frame .bottom-left{
+
+    bottom:8px;
+    left:10px;
+
+    border-bottom:2px solid var(--blue);
+    border-left:2px solid var(--blue);
+}
+
+
+.image-frame .bottom-right{
+
+    bottom:8px;
+    right:10px;
+
+    border-bottom:2px solid var(--blue);
+    border-right:2px solid var(--blue);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:1100px){
+
+    .navbar{
+
+        padding:18px 30px;
+    }
+
+    .nav-left{
+
+        gap:20px;
+    }
+
+    .nav-menu{
+
+        gap:18px;
+    }
+
+    .nav-menu a{
+
+        font-size:13px;
+    }
+
+    .hero{
+
+        padding:
+            130px 35px
+            60px 35px;
+    }
+
+    .hero-content{
+
+        gap:40px;
+    }
+
+    .hero-left h1{
+
+        font-size:55px;
+    }
+
+    .showroom{
+
+        width:55%;
+    }
+
+    .image-frame{
+
+        height:150px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:750px){
+
+    .navbar{
+
+        position:relative;
+
+        padding:15px 20px;
+
+        background:#000;
+    }
+
+    .nav-left{
+
+        width:100%;
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    .nav-menu{
+
+        width:100%;
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+        gap:12px 18px;
+    }
+
+    .hero{
+
+        padding:
+            60px 20px;
+    }
+
+    .hero-content{
+
+        flex-direction:column;
+
+        gap:50px;
+    }
+
+    .hero-left{
+
+        width:100%;
+
+        padding:0;
+
+        text-align:center;
+    }
+
+    .hero-left h1{
+
+        font-size:46px;
+    }
+
+    .hero-left p{
+
+        font-size:16px;
+    }
+
+    .hero-left p::before{
+
+        display:none;
+    }
+
+    .showroom{
+
+        width:100%;
+    }
+
+    .bike-grid{
+
+        max-width:600px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media(max-width:500px){
+
+    .brand-name{
+
+        font-size:21px;
+    }
+
+    .logo{
+
+        width:48px;
+        height:48px;
+    }
+
+    .hero-left h1{
+
+        font-size:37px;
+    }
+
+    .order-title{
+
+        font-size:23px;
+
+        letter-spacing:3px;
+    }
+
+    .bike-grid{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+    .image-frame{
+
+        height:190px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     AUDIO
+===================================================== -->
+
+<audio id="song1" src="raj.mp3"></audio>
+
+<audio id="song2" src="aa23.mp3"></audio>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<div class="navbar">
+
+    <div class="nav-left">
+
+
+        <!-- =============================================
+             BRAND
+        ============================================== -->
+
+        <div class="brand">
+
+            <img
+
+                onclick="toggleMusic()"
+
+                src="https://cdna.artstation.com/p/assets/images/images/015/177/696/original/artai-fernandez-moto-turntable-1.gif?1547382003"
+
+                class="logo"
+
+                alt="Future Bike Logo"
+
+            >
+
+            <span class="brand-name">
+
+                Future Bike
+
+            </span>
+
+        </div>
+
+
+        <!-- =============================================
+             NAVIGATION
+        ============================================== -->
+
+        <nav class="nav-menu">
+
+            <a href="models.html">
+                New Models
+            </a>
+
+            <a href="electric.html">
+                Electric Bikes
+            </a>
+
+            <a href="video.html">
+                Bike Video
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="special.html">
+                Special Bikes
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="hero">
+
+
+    <div class="hero-content">
+
+
+        <!-- =================================================
+             LEFT SIDE
+        ================================================== -->
+
+        <div class="hero-left">
+
+            <h1>
+
+                Future Bike<br>
+
+                Showroom
+
+            </h1>
+
+
+            <p>
+
+                Explore futuristic bikes.
+
+                Book, ride and experience tomorrow.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT SIDE
+        ================================================== -->
+
+        <div class="showroom">
+
+
+            <!-- =============================================
+                 ORDER NOW
+            ============================================== -->
+
+            <div class="order-title">
+
+                Order Now
+
+            </div>
+
+
+
+            <!-- =============================================
+                 FOUR BIKE BUTTONS
+            ============================================== -->
+
+            <div class="bike-grid">
+
+
+                <!-- =========================================
+                     BIKE 1
+                ========================================== -->
+
+                <a href="models.html" class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+
+                            src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1000&q=85"
+
+                            alt="New Models"
+
+                        >
+
+                        <span class="corner top-left"></span>
+
+                        <span class="corner top-right"></span>
+
+                        <span class="corner bottom-left"></span>
+
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+
+                    <div class="bike-name">
+
+                        New Models
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =========================================
+                     BIKE 2
+                ========================================== -->
+
+                <a href="electric.html" class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+
+                            src="https://images.unsplash.com/photo-1558980394-0c9a2c7a3f2d?auto=format&fit=crop&w=1000&q=85"
+
+                            alt="Electric Bikes"
+
+                        >
+
+                        <span class="corner top-left"></span>
+
+                        <span class="corner top-right"></span>
+
+                        <span class="corner bottom-left"></span>
+
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+
+                    <div class="bike-name">
+
+                        Electric Bikes
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =========================================
+                     BIKE 3
+                ========================================== -->
+
+                <a href="video.html" class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+
+                            src="https://images.unsplash.com/photo-1558980664-10ea7c0f2f6d?auto=format&fit=crop&w=1000&q=85"
+
+                            alt="Bike Video"
+
+                        >
+
+                        <span class="corner top-left"></span>
+
+                        <span class="corner top-right"></span>
+
+                        <span class="corner bottom-left"></span>
+
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+
+                    <div class="bike-name">
+
+                        Bike Video
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- =========================================
+                     BIKE 4
+                ========================================== -->
+
+                <a href="special.html" class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+
+                            src="https://images.unsplash.com/photo-1568772585407-9361f9d7b4f0?auto=format&fit=crop&w=1000&q=85"
+
+                            alt="Special Bikes"
+
+                        >
+
+                        <span class="corner top-left"></span>
+
+                        <span class="corner top-right"></span>
+
+                        <span class="corner bottom-left"></span>
+
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+
+                    <div class="bike-name">
+
+                        Special Bikes
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =====================================================
+   MUSIC CONTROL
+===================================================== */
+
+let song1 =
+    document.getElementById("song1");
+
+let song2 =
+    document.getElementById("song2");
+
+let musicPlaying = false;
+
+
+/* =====================================================
+   FIRST SONG ENDS
+===================================================== */
+
+song1.onended = function(){
+
+    if(musicPlaying){
+
+        song2.play();
+
+    }
+
+};
+
+
+/* =====================================================
+   SECOND SONG ENDS
+===================================================== */
+
+song2.onended = function(){
+
+    if(musicPlaying){
+
+        song1.play();
+
+    }
+
+};
+
+
+/* =====================================================
+   MUSIC TOGGLE
+===================================================== */
+
+function toggleMusic(){
+
+    if(!musicPlaying){
+
+        song1.play();
+
+        musicPlaying = true;
+
+    }
+
+    else{
+
+        song1.pause();
+
+        song2.pause();
+
+        song1.currentTime = 0;
+
+        song2.currentTime = 0;
+
+        musicPlaying = false;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   HERO BACKGROUND SLIDER
+===================================================== */
+
+let images = [
+
+    "https://www.gifcen.com/wp-content/uploads/2023/07/iron-man-gif-6.gif",
+
+    "https://i.pinimg.com/originals/58/6f/74/586f7407c39b99124dca5d336af88287.gif",
+
+    "https://i.pinimg.com/originals/17/f0/c9/17f0c99064c2c0842400697ea33f7c89.gif",
+
+    "https://i.pinimg.com/originals/01/db/a5/01dba5f631a6949c6c5ad5e79b73aefd.gif",
+
+    "https://images.squarespace-cdn.com/content/v1/58e45a52ebbd1a24417fdf93/1529963114997-WL9M0STKWVBIZBFEFF9S/avengersinfinity.gif"
+
+];
+
+
+let index = 0;
+
+
+/* =====================================================
+   CHANGE BACKGROUND
+===================================================== */
+
+function changeBackground(){
+
+    document.getElementById("hero").style.backgroundImage =
+
+        "url('" + images[index] + "')";
+
+
+    index++;
+
+
+    if(index === images.length){
+
+        index = 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   CHANGE EVERY 4 SECONDS
+===================================================== */
+
+setInterval(
+    changeBackground,
+    4000
+);
+
+
+/* =====================================================
+   LOAD FIRST BACKGROUND
+===================================================== */
+
+changeBackground();
+
+</script>
+
+
+</body>
+
+</html>
