@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Futurestic Bike Showroom</title>
+
+<style>
+
+/* =====================================================
+   GLOBAL SETTINGS
+===================================================== */
+
+:root{
+    --blue:#00eaff;
+    --blue-light:#b8ffff;
+    --blue-dark:#006cff;
+
+    --sky-blue:#38d9ff;
+    --sky-light:#c9f8ff;
+    --sky-bright:#8ff3ff;
+
+    --war-white:#e8e6df;
+    --war-gray:#a9a69f;
+
+    --logo-size:60px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    padding:20px 60px;
+
+    z-index:20;
+}
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-shrink:0;
+}
+
+
+/* =====================================================
+   OLD LOGO
+   ORIGINAL ROUND LOGO IMAGE
+===================================================== */
+
+.logo{
+    width:var(--logo-size);
+    height:var(--logo-size);
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    border:2px solid var(--sky-blue);
+
+    box-shadow:
+        0 0 10px var(--sky-blue),
+        0 0 20px var(--sky-blue),
+        0 0 35px rgba(56,217,255,0.65);
+
+    transition:0.4s;
+
+    object-fit:cover;
+}
+
+.logo:hover{
+    transform:
+        scale(1.12)
+        rotate(8deg);
+
+    box-shadow:
+        0 0 15px var(--sky-blue),
+        0 0 35px var(--sky-blue),
+        0 0 65px var(--sky-blue);
+}
+
+
+/* =====================================================
+   ORVIX BIKES WORDMARK
+   NO GLOW
+   NO SHINE
+   NO BLUE BOX
+===================================================== */
+
+.brand-name{
+
+    position:relative;
+
+    display:inline-block;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size:29px;
+
+    font-weight:900;
+
+    letter-spacing:1px;
+
+    line-height:1;
+
+    text-transform:uppercase;
+
+    background:transparent;
+
+    color:#38d9ff;
+
+    -webkit-text-fill-color:#38d9ff;
+
+    text-shadow:none;
+
+    box-shadow:none;
+
+    filter:none;
+
+    transform:skewX(-7deg);
+
+    white-space:nowrap;
+
+    overflow:visible;
+
+    transition:
+        0.25s ease;
+}
+
+
+/* Remove all logo-word effects */
+
+.brand-name::before,
+.brand-name::after{
+
+    content:none !important;
+
+    display:none !important;
+}
+
+
+/* Logo word hover */
+
+.brand-name:hover{
+
+    color:#38d9ff;
+
+    -webkit-text-fill-color:#38d9ff;
+
+    background:transparent;
+
+    text-shadow:none;
+
+    box-shadow:none;
+
+    filter:none;
+
+    transform:
+        skewX(-7deg)
+        scale(1.02);
+}
+
+
+/* =====================================================
+   NAVIGATION MENU
+===================================================== */
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:5px 0;
+}
+
+
+.nav-menu a{
+
+    position:relative;
+
+    display:inline-block;
+
+    padding:6px 0;
+
+    text-decoration:none;
+
+    color:#d9ffff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:0.5px;
+
+    white-space:nowrap;
+
+    transition:0.3s;
+
+    z-index:2;
+}
+
+
+.nav-menu a:hover{
+
+    color:white;
+
+    text-shadow:
+        0 0 5px var(--blue),
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   BLUE UNDERLINE
+===================================================== */
+
+.nav-menu a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-4px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--blue);
+
+    box-shadow:
+        0 0 5px var(--blue),
+        0 0 12px var(--blue);
+
+    transition:0.35s;
+}
+
+
+.nav-menu a:hover::after{
+    width:100%;
+}
+
+
+/* =====================================================
+   MOVING SHINE ACROSS TOP MENU
+===================================================== */
+
+.nav-menu::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:-60px;
+
+    width:50px;
+
+    height:42px;
+
+    transform:
+        translateY(-50%)
+        skewX(-20deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(0,234,255,0.05) 15%,
+            rgba(255,255,255,0.95) 50%,
+            rgba(0,234,255,0.05) 85%,
+            transparent 100%
+        );
+
+    filter:
+        blur(1px)
+        drop-shadow(0 0 8px var(--blue))
+        drop-shadow(0 0 18px var(--blue));
+
+    pointer-events:none;
+
+    z-index:5;
+
+    animation:
+        menuShine 5s linear infinite;
+}
+
+
+@keyframes menuShine{
+
+    0%{
+        left:-60px;
+        opacity:0;
+    }
+
+    5%{
+        opacity:1;
+    }
+
+    90%{
+        opacity:1;
+    }
+
+    100%{
+        left:110%;
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:
+        130px 70px
+        70px 90px;
+
+    background-size:cover;
+
+    background-position:center;
+
+    transition:1s;
+}
+
+
+/* =====================================================
+   DARK OVERLAY
+===================================================== */
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.90),
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.78)
+        );
+
+    z-index:0;
+}
+
+
+/* =====================================================
+   HERO CONTENT
+===================================================== */
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:70px;
+}
+
+
+/* =====================================================
+   LEFT SIDE
+===================================================== */
+
+.hero-left{
+
+    width:42%;
+
+    padding-left:25px;
+}
+
+
+/* =====================================================
+   MAIN TITLE
+===================================================== */
+
+.hero-left h1{
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        sans-serif;
+
+    font-size:70px;
+
+    line-height:0.95;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:var(--war-white);
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #dddcd6 20%,
+            #aaa8a1 48%,
+            #dedcd5 70%,
+            #85827c 100%
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    transform:skewX(-6deg);
+
+    text-shadow:
+        2px 2px 0 #555,
+        4px 4px 0 #111;
+
+    filter:
+        drop-shadow(0 3px 2px rgba(0,0,0,0.95))
+        drop-shadow(0 0 5px rgba(255,255,255,0.18));
+
+    position:relative;
+}
+
+
+/* =====================================================
+   TITLE TEXTURE
+===================================================== */
+
+.hero-left h1::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        repeating-linear-gradient(
+            100deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(255,255,255,0.14) 5px,
+            transparent 7px
+        );
+
+    opacity:0.45;
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.hero-left p{
+
+    margin-top:25px;
+
+    font-size:18px;
+
+    color:#d0d0d0;
+
+    letter-spacing:1px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   SMALL BLUE LINE
+===================================================== */
+
+.hero-left p::before{
+
+    content:"";
+
+    display:inline-block;
+
+    width:45px;
+
+    height:2px;
+
+    margin-right:12px;
+
+    vertical-align:middle;
+
+    background:var(--blue);
+
+    box-shadow:
+        0 0 6px var(--blue),
+        0 0 15px var(--blue);
+}
+
+
+/* =====================================================
+   RIGHT SIDE SHOWROOM
+===================================================== */
+
+.showroom{
+
+    width:54%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* =====================================================
+   ORDER NOW
+===================================================== */
+
+.order-title{
+
+    margin-bottom:24px;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:white;
+
+    text-shadow:
+        0 0 5px var(--blue),
+        0 0 12px var(--blue);
+}
+
+
+.order-title::after{
+
+    content:"";
+
+    display:block;
+
+    width:150px;
+
+    height:2px;
+
+    margin:8px auto 0;
+
+    background:var(--blue);
+
+    box-shadow:
+        0 0 5px var(--blue),
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   FOUR IMAGE BUTTONS
+===================================================== */
+
+.bike-grid{
+
+    width:100%;
+
+    max-width:720px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:32px 35px;
+}
+
+
+/* =====================================================
+   BIKE BUTTON
+===================================================== */
+
+.bike-button{
+
+    display:block;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    position:relative;
+
+    -webkit-tap-highlight-color:transparent;
+
+    transition:
+        transform 0.18s ease;
+}
+
+
+.bike-button:active{
+
+    transform:
+        scale(0.94)
+        translateY(4px);
+}
+
+
+/* =====================================================
+   CLICKING EFFECT
+===================================================== */
+
+.bike-button:active .image-frame{
+
+    border-color:#ffffff;
+
+    box-shadow:
+        0 0 12px #ffffff,
+        0 0 28px var(--blue),
+        0 0 55px rgba(0,234,255,0.8);
+
+    filter:
+        brightness(1.25);
+}
+
+
+/* =====================================================
+   CLICK FLASH
+===================================================== */
+
+.bike-button::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:40%;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 15px white,
+        0 0 30px var(--blue),
+        0 0 55px var(--blue);
+
+    transform:
+        translate(-50%,-50%)
+        scale(0);
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+
+.bike-button:active::after{
+
+    animation:
+        clickFlash 0.45s ease-out;
+}
+
+
+@keyframes clickFlash{
+
+    0%{
+
+        transform:
+            translate(-50%,-50%)
+            scale(0);
+
+        opacity:1;
+    }
+
+    100%{
+
+        transform:
+            translate(-50%,-50%)
+            scale(18);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   IMAGE FRAME
+===================================================== */
+
+.image-frame{
+
+    position:relative;
+
+    width:100%;
+
+    height:175px;
+
+    overflow:hidden;
+
+    clip-path:
+        polygon(
+            10% 0%,
+            90% 0%,
+            100% 100%,
+            0% 100%
+        );
+
+    border:2px solid var(--blue);
+
+    background:#02090c;
+
+    box-shadow:
+
+        0 0 7px rgba(0,234,255,0.5),
+
+        inset 0 0 15px rgba(0,234,255,0.12);
+
+    transition:
+        0.35s;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.image-frame img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    opacity:0.82;
+
+    transition:0.45s;
+}
+
+
+/* =====================================================
+   IMAGE DARK LAYER
+===================================================== */
+
+.image-frame::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.35)
+        );
+
+    pointer-events:none;
+}
+
+
+/* =====================================================
+   IMAGE BUTTON HOVER
+===================================================== */
+
+.bike-button:hover .image-frame{
+
+    border-color:#ffffff;
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+
+        0 0 10px var(--blue),
+
+        0 0 22px rgba(0,234,255,0.45);
+}
+
+
+.bike-button:hover .image-frame img{
+
+    transform:scale(1.08);
+
+    opacity:1;
+}
+
+
+/* =====================================================
+   BIKE NAME
+===================================================== */
+
+.bike-name{
+
+    margin-top:13px;
+
+    color:white;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        0 0 4px var(--blue),
+        0 0 9px var(--blue);
+
+    transition:0.3s;
+}
+
+
+.bike-button:hover .bike-name{
+
+    color:var(--blue-light);
+
+    text-shadow:
+        0 0 5px var(--blue),
+        0 0 12px var(--blue);
+}
+
+
+/* =====================================================
+   SMALL CORNER LIGHTS
+===================================================== */
+
+.image-frame .corner{
+
+    position:absolute;
+
+    width:14px;
+
+    height:14px;
+
+    z-index:5;
+}
+
+
+.image-frame .top-left{
+
+    top:8px;
+    left:10px;
+
+    border-top:2px solid var(--blue);
+    border-left:2px solid var(--blue);
+}
+
+
+.image-frame .top-right{
+
+    top:8px;
+    right:10px;
+
+    border-top:2px solid var(--blue);
+    border-right:2px solid var(--blue);
+}
+
+
+.image-frame .bottom-left{
+
+    bottom:8px;
+    left:10px;
+
+    border-bottom:2px solid var(--blue);
+    border-left:2px solid var(--blue);
+}
+
+
+.image-frame .bottom-right{
+
+    bottom:8px;
+    right:10px;
+
+    border-bottom:2px solid var(--blue);
+    border-right:2px solid var(--blue);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:1100px){
+
+    .navbar{
+        padding:18px 30px;
+    }
+
+    .nav-left{
+        gap:20px;
+    }
+
+    .nav-menu{
+        gap:18px;
+    }
+
+    .nav-menu a{
+        font-size:13px;
+    }
+
+    .hero{
+        padding:
+            130px 35px
+            60px 35px;
+    }
+
+    .hero-content{
+        gap:40px;
+    }
+
+    .hero-left h1{
+        font-size:55px;
+    }
+
+    .showroom{
+        width:55%;
+    }
+
+    .image-frame{
+        height:150px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:750px){
+
+    .navbar{
+
+        position:relative;
+
+        padding:15px 20px;
+
+        background:#000;
+    }
+
+    .nav-left{
+
+        width:100%;
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    .nav-menu{
+
+        width:100%;
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+        gap:12px 18px;
+    }
+
+    .hero{
+
+        padding:
+            60px 20px;
+    }
+
+    .hero-content{
+
+        flex-direction:column;
+
+        gap:50px;
+    }
+
+    .hero-left{
+
+        width:100%;
+
+        padding:0;
+
+        text-align:center;
+    }
+
+    .hero-left h1{
+
+        font-size:46px;
+    }
+
+    .hero-left p{
+
+        font-size:16px;
+    }
+
+    .hero-left p::before{
+
+        display:none;
+    }
+
+    .showroom{
+
+        width:100%;
+    }
+
+    .bike-grid{
+
+        max-width:600px;
+    }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media(max-width:500px){
+
+    .brand-name{
+
+        font-size:21px;
+
+        letter-spacing:1.5px;
+    }
+
+    .logo{
+
+        width:48px;
+
+        height:48px;
+    }
+
+    .hero-left h1{
+
+        font-size:37px;
+    }
+
+    .order-title{
+
+        font-size:23px;
+
+        letter-spacing:3px;
+    }
+
+    .bike-grid{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+    .image-frame{
+
+        height:190px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<div class="navbar">
+
+    <div class="nav-left">
+
+
+        <!-- =================================================
+             OLD LOGO + BRAND NAME
+        ================================================== -->
+
+        <div class="brand">
+
+            <img
+                src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/851652158558833.63f3fa90de62a.gif"
+                class="logo"
+                alt="Future Bike Logo"
+            >
+
+            <span class="brand-name">
+                ORVIX BIKES
+            </span>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <nav class="nav-menu">
+
+            <a href="about.html">
+                About Company
+            </a>
+
+            <a href="delivery.html">
+                Delivery system
+            </a>
+
+            <a href="truck.html">
+                Friendly truck
+            </a>
+
+            <a href="Quaity.html">
+                Quality check
+            </a>
+
+            <a href="Contact.html">
+                Contact us
+            </a>
+
+        </nav>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="hero">
+
+
+    <div class="hero-content">
+
+
+        <!-- =================================================
+             LEFT SIDE
+        ================================================== -->
+
+        <div class="hero-left">
+
+            <h1>
+                Futuristic Bikes<br>
+                FROM ORVIX Showroom
+            </h1>
+
+            <p>
+                Explore futuristic bikes.
+                Book, ride and experience tomorrow.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             RIGHT SIDE
+        ================================================== -->
+
+        <div class="showroom">
+
+
+            <div class="order-title">
+                Order Now
+            </div>
+
+
+            <div class="bike-grid">
+
+
+                <!-- =================================================
+                     BIKE 1
+                ================================================== -->
+
+                <a
+                    href="models.html"
+                    class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+                            src="https://assets.newatlas.com/dims4/default/afde282/2147483647/strip/true/crop/1800x1200+0+0/resize/1800x1200!/format/webp/quality/90/?url=https%3A%2F%2Fnewatlas-brightspot.s3.ap-southeast-2.amazonaws.com%2F5c%2Fbb%2F6ea4c6754419827ece1acd0b4467%2Fto-gal-06.jpg"
+                            alt="New Models"
+                        >
+
+                        <span class="corner top-left"></span>
+                        <span class="corner top-right"></span>
+                        <span class="corner bottom-left"></span>
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+                    <div class="bike-name">
+                        New Models
+                    </div>
+
+                </a>
+
+
+                <!-- =================================================
+                     BIKE 2
+                ================================================== -->
+
+                <a
+                    href="electric.html"
+                    class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+                            src="https://cdn.hiconsumption.com/wp-content/uploads/2025/11/Honda-EV-Outlier-Concept-Motorcycle-0-Hero.jpg"
+                            alt="Electric Bikes"
+                        >
+
+                        <span class="corner top-left"></span>
+                        <span class="corner top-right"></span>
+                        <span class="corner bottom-left"></span>
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+                    <div class="bike-name">
+                        Electric Bikes
+                    </div>
+
+                </a>
+
+
+                <!-- =================================================
+                     BIKE 3
+                ================================================== -->
+
+                <a
+                    href="jet.html"
+                    class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+                            src="https://img.magnific.com/free-photo/person-defying-laws-physics-by-levitating-atmosphere_23-2151122841.jpg?semt=ais_hybrid&w=740&q=80"
+                            alt="Jet Bikes"
+                        >
+
+                        <span class="corner top-left"></span>
+                        <span class="corner top-right"></span>
+                        <span class="corner bottom-left"></span>
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+                    <div class="bike-name">
+                        Jet Bikes
+                    </div>
+
+                </a>
+
+
+                <!-- =================================================
+                     BIKE 4
+                ================================================== -->
+
+                <a
+                    href="special.html"
+                    class="bike-button">
+
+                    <div class="image-frame">
+
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv31O6Vl9OAKJqCsi6n2R8U6rNkHlVXojfuf6huV93s35aABxinC-rXsY&s=10"
+                            alt="Special Bikes"
+                        >
+
+                        <span class="corner top-left"></span>
+                        <span class="corner top-right"></span>
+                        <span class="corner bottom-left"></span>
+                        <span class="corner bottom-right"></span>
+
+                    </div>
+
+                    <div class="bike-name">
+                        Special Bikes
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   HERO BACKGROUND SLIDER
+===================================================== */
+
+let images = [
+
+    "https://images2.alphacoders.com/110/thumb-1920-1106518.jpg",
+
+    "https://images8.alphacoders.com/595/595560.jpg",
+
+    "https://motionbgs.com/media/7293/bike-riding-at-night.3840x2160.jpg",
+
+    "https://img.magnific.com/free-photo/man-racing-dirt-bike-fantasy-environment_23-2151500487.jpg?semt=ais_hybrid&w=740&q=80",
+
+    "https://img.magnific.com/free-photo/man-racing-dirt-bike-fantasy-environment_23-2151500495.jpg?semt=ais_hybrid&w=740&q=80"
+
+];
+
+
+let index = 0;
+
+
+/* =====================================================
+   CHANGE BACKGROUND
+===================================================== */
+
+function changeBackground(){
+
+    document.getElementById("hero").style.backgroundImage =
+        "url('" + images[index] + "')";
+
+    index++;
+
+    if(index === images.length){
+
+        index = 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   CHANGE EVERY 4 SECONDS
+===================================================== */
+
+setInterval(
+    changeBackground,
+    4000
+);
+
+
+/* =====================================================
+   LOAD FIRST BACKGROUND
+===================================================== */
+
+changeBackground();
+
+</script>
+
+
+</body>
+
+</html>
