@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORVIX — Futuristic Bike Showroom</title>
+
+<style>
+
+/* =========================================================
+   ORVIX PREMIUM FUTURISTIC BIKE SHOWROOM
+   ========================================================= */
+
+:root{
+    --cyan:#00f7ff;
+    --cyan-soft:#63eaff;
+    --blue:#008cff;
+    --dark:#02070b;
+
+    --title-size:64px;
+
+    --card-width:280px;
+    --card-height:410px;
+    --card-gap:26px;
+
+    --border:rgba(0,247,255,.30);
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#000;
+    color:white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =========================================================
+   MAIN SHOWROOM
+   ========================================================= */
+
+.showroom{
+    position:relative;
+
+    width:100%;
+    min-height:100vh;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0,180,255,.12),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(0,100,255,.08),
+            transparent 50%
+        ),
+        #000;
+}
+
+
+/* =========================================================
+   FUTURISTIC GRID
+   ========================================================= */
+
+.grid{
+    position:absolute;
+
+    left:-10%;
+    bottom:-34%;
+
+    width:120%;
+    height:82%;
+
+    transform:
+        perspective(520px)
+        rotateX(62deg);
+
+    background-image:
+
+        linear-gradient(
+            rgba(0,247,255,.15) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0,247,255,.15) 1px,
+            transparent 1px
+        );
+
+    background-size:60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to top,
+            black,
+            transparent
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to top,
+            black,
+            transparent
+        );
+
+    pointer-events:none;
+
+    animation:gridMove 12s linear infinite;
+}
+
+@keyframes gridMove{
+
+    from{
+        background-position:0 0,0 0;
+    }
+
+    to{
+        background-position:0 60px,60px 0;
+    }
+}
+
+
+/* =========================================================
+   TOP ATMOSPHERIC LIGHT
+   ========================================================= */
+
+.top-light{
+    position:absolute;
+
+    top:-280px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:850px;
+    height:600px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0,247,255,.16),
+            transparent 68%
+        );
+
+    filter:blur(25px);
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   SIDE LIGHTS
+   ========================================================= */
+
+.side-light{
+    position:absolute;
+
+    width:2px;
+    height:62%;
+
+    top:22%;
+
+    background:
+        linear-gradient(
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(0,247,255,.8),
+        0 0 40px rgba(0,247,255,.35);
+
+    opacity:.5;
+
+    pointer-events:none;
+}
+
+.side-light.left{
+    left:25px;
+}
+
+.side-light.right{
+    right:25px;
+}
+
+
+/* =========================================================
+   HUD CORNER ELEMENTS
+   ========================================================= */
+
+.corner-ui{
+    position:absolute;
+
+    z-index:8;
+
+    width:70px;
+    height:70px;
+
+    opacity:.4;
+
+    pointer-events:none;
+}
+
+.corner-ui::before,
+.corner-ui::after{
+    content:"";
+
+    position:absolute;
+
+    background:var(--cyan);
+}
+
+.corner-ui::before{
+    width:45px;
+    height:1px;
+}
+
+.corner-ui::after{
+    width:1px;
+    height:45px;
+}
+
+.corner-top-left{
+    top:28px;
+    left:28px;
+}
+
+.corner-top-left::before{
+    top:0;
+    left:0;
+}
+
+.corner-top-left::after{
+    top:0;
+    left:0;
+}
+
+.corner-top-right{
+    top:28px;
+    right:28px;
+
+    transform:rotate(90deg);
+}
+
+.corner-bottom-left{
+    bottom:28px;
+    left:28px;
+
+    transform:rotate(-90deg);
+}
+
+.corner-bottom-right{
+    bottom:28px;
+    right:28px;
+
+    transform:rotate(180deg);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+    position:relative;
+
+    padding-top:32px;
+
+    width:100%;
+
+    text-align:center;
+
+    z-index:10;
+}
+
+
+/* =========================================================
+   ORVIX LOGO
+   ========================================================= */
+
+.logo{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:18px;
+
+    font-size:23px;
+
+    font-weight:900;
+
+    letter-spacing:6px;
+
+    color:#fff;
+
+    /* CLEAN LOGO — NO WHITE GLOW */
+    text-shadow:none;
+}
+
+.logo-mark{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:30px;
+    height:30px;
+
+    margin-right:10px;
+
+    border:1px solid var(--cyan);
+
+    color:var(--cyan);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    transform:skewX(-12deg);
+
+    background:rgba(0,247,255,.035);
+
+    box-shadow:
+        0 0 10px rgba(0,247,255,.15);
+}
+
+.logo-text{
+    color:#fff;
+
+    text-shadow:none;
+}
+
+.logo-text span{
+    color:var(--cyan);
+
+    text-shadow:none;
+}
+
+
+/* =========================================================
+   SMALL HEADER TEXT
+   ========================================================= */
+
+.header-small{
+    font-size:10px;
+
+    letter-spacing:8px;
+
+    color:#76edff;
+
+    margin-bottom:12px;
+
+    opacity:.75;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.title{
+    font-size:var(--title-size);
+
+    font-weight:800;
+
+    letter-spacing:7px;
+
+    color:white;
+
+    line-height:1.05;
+
+    text-shadow:
+        0 0 5px rgba(255,255,255,.7),
+        0 0 15px rgba(0,247,255,.7),
+        0 0 35px rgba(0,247,255,.35);
+}
+
+
+/* =========================================================
+   TITLE LINE
+   ========================================================= */
+
+.title-line{
+    position:relative;
+
+    margin:18px auto 0;
+
+    width:430px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0,247,255,.6);
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.subtitle{
+    margin-top:12px;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:rgba(255,255,255,.55);
+}
+
+
+/* =========================================================
+   BIKE AREA
+   ========================================================= */
+
+.bike-area{
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:var(--card-gap);
+
+    width:100%;
+
+    padding:45px 30px 90px;
+
+    z-index:5;
+}
+
+
+/* =========================================================
+   CARD LINK
+   ========================================================= */
+
+.bike-area > a{
+    display:block;
+
+    width:var(--card-width);
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================================
+   BIKE CARD
+   ========================================================= */
+
+.card{
+    position:relative;
+
+    width:100%;
+    height:var(--card-height);
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10,20,28,.95),
+            rgba(2,6,10,.98)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    transform:skewX(-4deg);
+
+    cursor:pointer;
+
+    transition:
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        box-shadow .45s ease,
+        border-color .45s ease;
+
+    box-shadow:
+        0 0 12px rgba(0,247,255,.08),
+        inset 0 0 30px rgba(0,247,255,.025);
+}
+
+
+/* =========================================================
+   CARD TOP EDGE
+   ========================================================= */
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            transparent
+        );
+
+    opacity:.65;
+
+    z-index:8;
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.bike-area > a:hover{
+    transform:translateY(-8px);
+}
+
+.card:hover{
+
+    transform:
+        skewX(-4deg)
+        translateY(-12px)
+        scale(1.035);
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.7),
+        0 0 20px rgba(0,247,255,.28),
+        0 0 55px rgba(0,247,255,.10),
+        inset 0 0 35px rgba(0,247,255,.06);
+}
+
+
+/* =========================================================
+   CARD IMAGE
+   ========================================================= */
+
+.card-image{
+    position:absolute;
+
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1),
+        filter .7s ease;
+}
+
+.card:hover .card-image{
+    transform:scale(1.08);
+
+    filter:
+        brightness(1.08)
+        saturate(1.12);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAY
+   ========================================================= */
+
+.card-image::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.05),
+            rgba(0,0,0,.08) 35%,
+            rgba(0,0,0,.94) 100%
+        );
+}
+
+
+/* =========================================================
+   PREMIUM SCAN EFFECT
+   ========================================================= */
+
+.card::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:-100%;
+
+    width:100%;
+    height:35%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0,247,255,.07),
+            transparent
+        );
+
+    z-index:6;
+
+    pointer-events:none;
+
+    transition:
+        top .8s ease;
+}
+
+.card:hover::after{
+    top:110%;
+}
+
+
+/* =========================================================
+   CARD NUMBER
+   ========================================================= */
+
+.card-number{
+    position:absolute;
+
+    top:18px;
+    left:25px;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    color:var(--cyan);
+
+    transform:skewX(4deg);
+
+    z-index:9;
+
+    text-shadow:
+        0 0 8px rgba(0,247,255,.7);
+}
+
+
+/* =========================================================
+   CARD CORNER
+   ========================================================= */
+
+.card-corner{
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:48px;
+    height:48px;
+
+    border-top:2px solid var(--cyan);
+    border-right:2px solid var(--cyan);
+
+    opacity:.65;
+
+    z-index:9;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.card-content{
+    position:absolute;
+
+    bottom:24px;
+
+    left:25px;
+    right:20px;
+
+    transform:skewX(4deg);
+
+    z-index:10;
+}
+
+
+/* =========================================================
+   BIKE NAME
+   ========================================================= */
+
+.bike-name{
+    font-size:25px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    color:#fff;
+
+    text-shadow:
+        0 2px 8px rgba(0,0,0,.9);
+}
+
+
+/* =========================================================
+   BIKE TYPE
+   ========================================================= */
+
+.bike-type{
+    margin-top:7px;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    color:#79efff;
+
+    opacity:.85;
+}
+
+
+/* =========================================================
+   CARD META
+   ========================================================= */
+
+.card-meta{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:12px;
+
+    font-size:8px;
+
+    letter-spacing:2px;
+
+    color:rgba(255,255,255,.55);
+}
+
+.meta-line{
+    width:25px;
+    height:1px;
+
+    background:var(--cyan);
+
+    opacity:.7;
+}
+
+
+/* =========================================================
+   PREMIUM BUTTON
+   ========================================================= */
+
+.view-button{
+    position:relative;
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-top:16px;
+
+    min-width:135px;
+
+    padding:10px 19px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(0,247,255,.8);
+
+    color:var(--cyan);
+
+    background:
+        rgba(0,247,255,.025);
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease,
+        transform .15s ease;
+}
+
+
+/* =========================================================
+   BUTTON LIGHT BAR
+   ========================================================= */
+
+.view-button::before{
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:80%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.55),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    transition:left .5s ease;
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.card:hover .view-button{
+    color:#001014;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 14px rgba(0,247,255,.4);
+
+    transform:translateX(3px);
+}
+
+.card:hover .view-button::before{
+    left:130%;
+}
+
+
+/* =========================================================
+   BUTTON PRESS EFFECT
+   ========================================================= */
+
+.view-button:active{
+
+    transform:
+        translateX(3px)
+        scale(.92);
+
+    background:#fff;
+
+    color:#001014;
+
+    border-color:#fff;
+
+    box-shadow:
+        0 0 8px rgba(255,255,255,.9),
+        0 0 25px rgba(0,247,255,.7);
+
+    transition:
+        transform .08s ease,
+        background .08s ease;
+}
+
+
+/* =========================================================
+   BUTTON RIPPLE
+   ========================================================= */
+
+.view-button:active::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.8);
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    animation:
+        buttonRipple .45s ease-out forwards;
+
+    pointer-events:none;
+}
+
+@keyframes buttonRipple{
+
+    from{
+        opacity:.9;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+    }
+
+    to{
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(12);
+    }
+}
+
+
+/* =========================================================
+   BIKE IMAGES
+   ========================================================= */
+
+.card1 .card-image{
+    background-image:url(
+        "https://www.slashgear.com/img/gallery/6-futuristic-motorcycles-that-actually-exist/arc-vector-1733391512.jpg"
+    );
+}
+
+.card2 .card-image{
+    background-image:url(
+        "https://mir-s3-cdn-cf.behance.net/project_modules/fs/51974a34438857.56d1cded3a57e.jpg"
+    );
+}
+
+.card3 .card-image{
+    background-image:url(
+        "https://i.pinimg.com/originals/84/d2/7b/84d27bf05fb6b6ecd6a24f559a619e39.jpg"
+    );
+}
+
+.card4 .card-image{
+    background-image:url(
+        "https://wirecase3d.com/cdn/shop/products/bike1.jpg?v=1532863204&width=1445"
+    );
+}
+
+
+/* =========================================================
+   SYSTEM STATUS
+   ========================================================= */
+
+.status{
+    position:absolute;
+
+    bottom:25px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#63eaff;
+
+    font-size:9px;
+
+    letter-spacing:4px;
+
+    opacity:.65;
+
+    z-index:20;
+
+    white-space:nowrap;
+}
+
+.status-dot{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:var(--cyan);
+
+    box-shadow:
+        0 0 10px var(--cyan);
+
+    animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+
+    0%,
+    100%{
+        opacity:.35;
+        transform:scale(.8);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:1250px){
+
+    :root{
+        --card-width:230px;
+        --card-height:365px;
+        --card-gap:18px;
+
+        --title-size:50px;
+    }
+
+    .bike-area{
+        padding-top:40px;
+    }
+
+    .bike-name{
+        font-size:21px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media(max-width:1000px){
+
+    body{
+        overflow:auto;
+    }
+
+    .showroom{
+        min-height:100vh;
+
+        padding-bottom:70px;
+    }
+
+    .bike-area{
+        flex-wrap:wrap;
+
+        padding:
+            40px 25px 90px;
+    }
+
+    .title{
+        font-size:40px;
+    }
+
+    .status{
+        position:fixed;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px){
+
+    .header{
+        padding-top:25px;
+    }
+
+    .logo{
+        font-size:17px;
+
+        letter-spacing:4px;
+    }
+
+    .logo-mark{
+        width:26px;
+        height:26px;
+
+        font-size:10px;
+    }
+
+    .header-small{
+        font-size:8px;
+
+        letter-spacing:4px;
+    }
+
+    .title{
+        font-size:27px;
+
+        letter-spacing:4px;
+    }
+
+    .subtitle{
+        font-size:7px;
+
+        letter-spacing:2px;
+
+        padding:0 20px;
+    }
+
+    .title-line{
+        width:230px;
+    }
+
+    .bike-area{
+        flex-direction:column;
+
+        gap:24px;
+
+        padding-top:35px;
+    }
+
+    .bike-area > a{
+        width:280px;
+    }
+
+    .card{
+        width:280px;
+        height:390px;
+    }
+
+    .corner-ui{
+        display:none;
+    }
+
+    .status{
+        bottom:14px;
+
+        font-size:7px;
+
+        letter-spacing:3px;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+
+        transition:none !important;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="showroom">
+
+
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
+
+    <div class="top-light"></div>
+
+    <div class="grid"></div>
+
+    <div class="side-light left"></div>
+    <div class="side-light right"></div>
+
+
+    <!-- HUD CORNERS -->
+
+    <div class="corner-ui corner-top-left"></div>
+    <div class="corner-ui corner-top-right"></div>
+
+    <div class="corner-ui corner-bottom-left"></div>
+    <div class="corner-ui corner-bottom-right"></div>
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header class="header">
+
+
+        <!-- ORVIX LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-mark">
+                OR
+            </div>
+
+            <div class="logo-text">
+                OR<span>VIX</span>
+            </div>
+
+        </div>
+
+
+        <div class="header-small">
+            NEXT GENERATION MOBILITY
+        </div>
+
+
+        <h1 class="title">
+            COMING SOON
+        </h1>
+
+
+        <div class="title-line"></div>
+
+
+        <div class="subtitle">
+            EXPERIENCE THE NEXT EVOLUTION OF TWO-WHEEL MOBILITY
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         BIKE CARDS
+         ===================================================== -->
+
+    <main class="bike-area">
+
+
+        <!-- ================= BIKE 1 ================= -->
+
+        <a href="bike1.html">
+
+            <div class="card card1">
+
+                <div class="card-image"></div>
+
+                <div class="card-number">
+                    01
+                </div>
+
+                <div class="card-corner"></div>
+
+                <div class="card-content">
+
+                    <div class="bike-name">
+                        PHANTOM X
+                    </div>
+
+                    <div class="bike-type">
+                        HYPER ELECTRIC
+                    </div>
+
+                    <div class="card-meta">
+                        <span class="meta-line"></span>
+                        FUTURE SERIES
+                    </div>
+
+                    <div class="view-button">
+                        VIEW BIKE →
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- ================= BIKE 2 ================= -->
+
+        <a href="bike2.html">
+
+            <div class="card card2">
+
+                <div class="card-image"></div>
+
+                <div class="card-number">
+                    02
+                </div>
+
+                <div class="card-corner"></div>
+
+                <div class="card-content">
+
+                    <div class="bike-name">
+                        NEON RIDER
+                    </div>
+
+                    <div class="bike-type">
+                        URBAN ELECTRIC
+                    </div>
+
+                    <div class="card-meta">
+                        <span class="meta-line"></span>
+                        CITY SERIES
+                    </div>
+
+                    <div class="view-button">
+                        VIEW BIKE →
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- ================= BIKE 3 ================= -->
+
+        <a href="bike3.html">
+
+            <div class="card card3">
+
+                <div class="card-image"></div>
+
+                <div class="card-number">
+                    03
+                </div>
+
+                <div class="card-corner"></div>
+
+                <div class="card-content">
+
+                    <div class="bike-name">
+                        CYBER BLADE
+                    </div>
+
+                    <div class="bike-type">
+                        PERFORMANCE EV
+                    </div>
+
+                    <div class="card-meta">
+                        <span class="meta-line"></span>
+                        RACING SERIES
+                    </div>
+
+                    <div class="view-button">
+                        VIEW BIKE →
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+
+        <!-- ================= BIKE 4 ================= -->
+
+        <a href="bike4.html">
+
+            <div class="card card4">
+
+                <div class="card-image"></div>
+
+                <div class="card-number">
+                    04
+                </div>
+
+                <div class="card-corner"></div>
+
+                <div class="card-content">
+
+                    <div class="bike-name">
+                        VORTEX 9
+                    </div>
+
+                    <div class="bike-type">
+                        FUTURE STREET
+                    </div>
+
+                    <div class="card-meta">
+                        <span class="meta-line"></span>
+                        STREET SERIES
+                    </div>
+
+                    <div class="view-button">
+                        VIEW BIKE →
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SYSTEM STATUS
+         ===================================================== -->
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        SYSTEM ONLINE
+
+    </div>
+
+
+</div>
+
+</body>
+</html>
